@@ -1,0 +1,38 @@
+﻿@model QulixSystemsTestProject.Models.Company
+
+
+@{
+    ViewBag.Title = "Добавление Работника";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление новой компании</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Компания</legend>
+
+        <p>
+            Название <br />
+            @Html.EditorFor(model => model.Title)
+        </p>
+
+        <p>
+            Количество сотрудников <br />
+            @Html.EditorFor(model => model.Size)
+        </p>
+
+        <p>
+            Тип организации <br />
+            @Html.EditorFor(model => model.Form)
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить компанию в БД" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку компаний", "List")
+</div>

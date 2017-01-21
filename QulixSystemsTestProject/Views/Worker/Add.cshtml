@@ -1,0 +1,40 @@
+﻿@model QulixSystemsTestProject.Models.Worker
+
+@{
+    ViewBag.Title = "Добавление Работника";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление нового игрока</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Работник</legend>
+
+        <p>
+            Фамилия <br />
+            @Html.EditorFor(model => model.SurName)
+        </p>
+       
+         <p>
+             Имя <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+        
+        <p>
+            Отчество <br />
+            @Html.EditorFor(model => model.MiddleName)
+        </p>
+
+       
+
+        <p>
+            <input type="submit" value="Добавить игрока" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку игроков", "Index")
+</div>
+

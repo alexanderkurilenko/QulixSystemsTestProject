@@ -1,0 +1,36 @@
+﻿@model IEnumerable<QulixSystemsTestProject.Models.Company>
+
+@{
+    ViewBag.Title = "Список компаний";
+}
+
+<h2>Список компаний</h2>
+<p>
+    @Html.ActionLink("Добавить","Add")
+</p>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Количество сотрудников</th>
+        <th>Форма организации</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem=>item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem=>item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem=>item.Form)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.ID})
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+

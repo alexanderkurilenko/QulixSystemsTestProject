@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center" >Меню</h2>
+
+@using (Html.BeginForm("List", "Company", FormMethod.Get))
+{
+    <p style="text-align:center">
+        <button>Компании</button>
+    </p>
+}
+
+@using (Html.BeginForm("List", "Workers", FormMethod.Get))
+{
+    <p style="text-align:center">
+        <button>Работники</button>
+    </p>
+}
+
+
