@@ -11,19 +11,26 @@ namespace QulixSystemsTestProject.Controllers
     {
         //
         // GET: /Worker/
-        WorkerRepository rep;
-        public WorkerController(WorkerRepository _rep)
-        {
-            rep = _rep;
-        }
+        WorkerRepository rep = new WorkerRepository();
+        CompanyRepository _rep = new CompanyRepository();
         
-        public ActionResult List()
-        {
-            return View();
-        }
         public ActionResult Add()
         {
+            var query = _rep.List();
+            ViewBag.Companies = query;
             return View();
+        }
+        [HttpPost]
+        public ActionResult Add(Worker _worker)
+        {
+            rep.Add(_worker);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult List()
+        {
+            var query = rep.List();
+            return View(query);
         }
 	}
 }

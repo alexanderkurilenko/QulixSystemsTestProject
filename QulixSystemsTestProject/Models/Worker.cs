@@ -16,7 +16,7 @@ namespace QulixSystemsTestProject.Models
         public string MiddleName { get; set; }
         public string SurName { get; set; }
         public DateTime Date { get; set; }
-        public Position Pos { get; set; }
+        public String Position { get; set; }
         public int CompanyID { get; set; }
 
     }

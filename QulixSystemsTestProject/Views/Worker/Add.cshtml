@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Добавление Работника";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] positions = new string[] { "Разработчик", "Тестировщик", "Бизнес-Аналитик", "Менеджер" };
 }
 
 <h2>Добавление нового игрока</h2>
@@ -27,10 +28,34 @@
             @Html.EditorFor(model => model.MiddleName)
         </p>
 
-       
+        <p>
+            Дата<br/>
+            <input id="Date"type="date" name="Date" value="true">
+        </p>
+        
+        <p>
+            Должность <br/>
+            <select id="Position" name="Position">
+                <option>Разработчик</option>
+                <option>Тестировщик</option>
+                <option>Бизнес-Аналитик</option>
+                <option>Менеджер</option>
+            </select>
+           
+        </p>
+        <p>
+            Компания<br/>
+            <select id="CompanyId" name="CompanyId">
+                @foreach (var item in ViewBag.Companies)
+                {
+                    <option value="@item.ID">@item.Title</option>
+                }
+            </select>
+          
+        </p>
 
         <p>
-            <input type="submit" value="Добавить игрока" />
+            <input type="submit" value="Добавить работника" />
         </p>
     </fieldset>
 }
