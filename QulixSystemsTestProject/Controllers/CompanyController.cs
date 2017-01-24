@@ -1,4 +1,5 @@
-﻿using QulixSystemsTestProject.Models;
+﻿using QulixSystemsTestProject.Models.Repositories;
+using QulixSystemsTestProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,13 @@ namespace QulixSystemsTestProject.Controllers
 {
     public class CompanyController : Controller
     {
-        CompanyRepository rep=new CompanyRepository();
-        
-        //
-        // GET: /Company/
+        IRepository<Company> rep;
+
+        public CompanyController()
+        {
+            rep=new CompanyRepository();
+        }
+           
         public ActionResult Index()
         {
             return View();
@@ -26,8 +30,13 @@ namespace QulixSystemsTestProject.Controllers
         [HttpPost]
         public ActionResult Add(Company _company)
         {
-            rep.Add(_company);
-            return RedirectToAction("List","Company");
+            if (ModelState.IsValid)
+            {
+                rep.Add(_company);
+                return RedirectToAction("List", "Company");
+            }
+            return View(_company);
+           
         }
 
         public ActionResult List()

@@ -1,4 +1,5 @@
-﻿using QulixSystemsTestProject.Models;
+﻿using QulixSystemsTestProject.Models.Repositories;
+using QulixSystemsTestProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,14 @@ namespace QulixSystemsTestProject.Controllers
 {
     public class WorkerController : Controller
     {
-        //
-        // GET: /Worker/
-        WorkerRepository rep = new WorkerRepository();
-        CompanyRepository _rep = new CompanyRepository();
+        
+        IRepository<Worker> rep; 
+        IRepository<Company>_rep ;
+
+        public WorkerController(){
+            rep= new WorkerRepository();
+            _rep = new CompanyRepository(); 
+        }
         
         public ActionResult Add()
         {
@@ -20,17 +25,43 @@ namespace QulixSystemsTestProject.Controllers
             ViewBag.Companies = query;
             return View();
         }
+
         [HttpPost]
         public ActionResult Add(Worker _worker)
         {
-            rep.Add(_worker);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                rep.Add(_worker);
+                return RedirectToAction("List", "Worker");
+            }
+            return View(_worker);
+           
         }
 
         public ActionResult List()
         {
+            ViewBag.Companies = _rep.List();
             var query = rep.List();
             return View(query);
+        }
+        
+        public ActionResult Delete(int id)
+        {
+            rep.Delete(id);
+            return RedirectToAction("List", "Worker");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            ViewBag.Companies = _rep.List();
+            return View("Add", rep.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Worker _worker)
+        {
+            rep.Update(_worker);
+            return RedirectToAction("List", "Worker");
         }
 	}
 }

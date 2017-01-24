@@ -8,11 +8,12 @@
 <p>
     @Html.ActionLink("Добавить","Add")
 </p>
-<table>
+<table align="left" border="1">
     <tr>
         <th>Название</th>
         <th>Количество сотрудников</th>
         <th>Форма организации</th>
+        <th>Действия</th>
     </tr>
     @foreach (var item in Model)
     {

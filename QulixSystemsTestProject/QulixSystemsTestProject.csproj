@@ -98,6 +98,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,8 +106,9 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WorkerController.cs" />
-    <Compile Include="Models\CompanyRepository.cs" />
-    <Compile Include="Models\WorkerRepository.cs" />
+    <Compile Include="Models\Repositories\CompanyRepository.cs" />
+    <Compile Include="Models\Repositories\IRepository.cs" />
+    <Compile Include="Models\Repositories\WorkerRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

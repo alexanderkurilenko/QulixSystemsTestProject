@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Добавление Работника";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] positions = new string[] { "Разработчик", "Тестировщик", "Бизнес-Аналитик", "Менеджер" };
 }
 
 <h2>Добавление нового игрока</h2>
@@ -30,17 +29,19 @@
 
         <p>
             Дата<br/>
-            <input id="Date"type="date" name="Date" value="true">
+            @Html.EditorFor(model => model.Date)
         </p>
         
         <p>
             Должность <br/>
-            <select id="Position" name="Position">
+            <select id="Position" name="Position" data-val="true">
                 <option>Разработчик</option>
                 <option>Тестировщик</option>
                 <option>Бизнес-Аналитик</option>
                 <option>Менеджер</option>
             </select>
+
+            
            
         </p>
         <p>

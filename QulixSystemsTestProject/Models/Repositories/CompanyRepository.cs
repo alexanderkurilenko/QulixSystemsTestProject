@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace QulixSystemsTestProject.Models
+namespace QulixSystemsTestProject.Models.Repositories
 {
-    public class CompanyRepository
+    public class CompanyRepository:IRepository<Company>
     {
         private string connectionstring;
        
@@ -109,5 +109,30 @@ namespace QulixSystemsTestProject.Models
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public string SearchTitle(int id)
+        {
+            string result=null;
+            string sqlExpression = "SELECT Title FROM Company WHERE Id=@id";
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(sqlExpression, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string title = reader.GetString(0);
+                        result = title;
+                    }
+                }
+                reader.Close();
+                
+            }
+            return result;
+        }
+
     }
 }
