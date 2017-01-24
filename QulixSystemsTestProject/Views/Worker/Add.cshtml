@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Добавление нового игрока</h2>
+<h2>Добавление нового работника</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,21 +15,25 @@
         <p>
             Фамилия <br />
             @Html.EditorFor(model => model.SurName)
+            @Html.ValidationMessageFor(model => model.SurName)
         </p>
        
          <p>
              Имя <br />
             @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </p>
         
         <p>
             Отчество <br />
             @Html.EditorFor(model => model.MiddleName)
+            @Html.ValidationMessageFor(model => model.MiddleName)
         </p>
 
         <p>
             Дата<br/>
             @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
         </p>
         
         <p>
@@ -61,6 +65,6 @@
     </fieldset>
 }
 <div>
-    @Html.ActionLink("К списку игроков", "Index")
+    @Html.ActionLink("Назад", "List")
 </div>
 

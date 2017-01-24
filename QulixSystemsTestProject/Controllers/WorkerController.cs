@@ -29,6 +29,7 @@ namespace QulixSystemsTestProject.Controllers
         [HttpPost]
         public ActionResult Add(Worker _worker)
         {
+            ViewBag.Companies = _rep.List();
             if (ModelState.IsValid)
             {
                 rep.Add(_worker);

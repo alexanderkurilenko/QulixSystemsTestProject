@@ -13,31 +13,26 @@
     <fieldset>
         <legend>Компания</legend>
 
-        <div class="editor-field">
             <p>
                 Название <br />
                 @Html.EditorFor(model => model.Title)
                 @Html.ValidationMessageFor(model => model.Title)
             </p>
-       </div>
-        <div class="editor-field">
+       
+    
             <p>
                 Количество сотрудников <br />
                 @Html.EditorFor(model => model.Size)
                 @Html.ValidationMessageFor(model => model.Size)
             </p>
 
-        </div>
-           
-        <div class="editor-field">
+        
             <p>
                 Тип организации <br />
                 @Html.EditorFor(model => model.Form)
                 @Html.ValidationMessageFor(model => model.Form)
             </p>
-
-        </div>
-            
+    
 
             <p>
                 <input type="submit" value="Добавить компанию в БД" />

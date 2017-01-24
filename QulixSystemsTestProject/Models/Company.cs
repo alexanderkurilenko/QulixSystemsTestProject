@@ -13,7 +13,7 @@ namespace QulixSystemsTestProject.Models
         [Required]
         [Display(Name = "Название")]
         public string Title { get; set; }
-        [Required]
+        [RegularExpression(@"\d+", ErrorMessage = "Некорректное число")]
         [Display(Name = "Количество сотрудников")]
         public int Size { get; set; }
         [Required]
