@@ -1,2 +1,2 @@
 # QulixSystemsTestProject
-App_data folder contains ms sql database.
+App_Data folder contains ms sql database.
