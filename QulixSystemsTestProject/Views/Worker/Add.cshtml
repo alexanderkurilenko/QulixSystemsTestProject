@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Добавление Работника";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string [] positions=new string[] {"Разрабочик","Тестировщик","Бизнес-Аналитик","Менеджер"};
+    SelectList Pos = new SelectList(positions);
 }
 
 <h2>Добавление нового работника</h2>
@@ -38,24 +40,13 @@
         
         <p>
             Должность <br/>
-            <select id="Position" name="Position" data-val="true">
-                <option>Разработчик</option>
-                <option>Тестировщик</option>
-                <option>Бизнес-Аналитик</option>
-                <option>Менеджер</option>
-            </select>
-
+          @Html.DropDownListFor(model=>model.Position,Pos)
             
            
         </p>
         <p>
             Компания<br/>
-            <select id="CompanyId" name="CompanyId">
-                @foreach (var item in ViewBag.Companies)
-                {
-                    <option value="@item.ID">@item.Title</option>
-                }
-            </select>
+            @Html.DropDownListFor(model => model.CompanyID, ViewBag.Companies as SelectList)
           
         </p>
 
@@ -65,6 +56,6 @@
     </fieldset>
 }
 <div>
-    @Html.ActionLink("Назад", "List")
+    @Html.ActionLink("Назад", "List", "Worker")
 </div>
 

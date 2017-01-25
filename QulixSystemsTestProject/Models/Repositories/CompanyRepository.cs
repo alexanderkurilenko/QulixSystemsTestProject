@@ -29,6 +29,7 @@ namespace QulixSystemsTestProject.Models.Repositories
                 cmd.ExecuteNonQuery();
             }
         }
+
         public IEnumerable<Company> List()
         {
             List<Company> query = new List<Company>();

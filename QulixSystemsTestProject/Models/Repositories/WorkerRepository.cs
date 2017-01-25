@@ -56,7 +56,8 @@ namespace QulixSystemsTestProject.Models.Repositories
                         string  pos= reader.GetString(5);
                         int compId = reader.GetInt32(6);
                         string CompTitle = rep.SearchTitle(compId);
-                        query.Add(new Worker { ID = id, Name=name,MiddleName=middleName,SurName=surName,Date=date.Date,Position=pos,CompanyID=compId,CompanyTitle=CompTitle});
+                        query.Add(new Worker { ID = id, Name=name,MiddleName=middleName,SurName=surName,
+                            Date=date.Date,Position=pos,CompanyID=compId,CompanyTitle=CompTitle});
 
                     }
                 }
@@ -99,7 +100,8 @@ namespace QulixSystemsTestProject.Models.Repositories
                         DateTime date = reader.GetDateTime(4);
                         string pos = reader.GetString(5);
                         int compId = reader.GetInt32(6);
-                        tmp = new Worker { ID = _id, Name = name, MiddleName = middleName, SurName = surName, Date = date.Date, Position = pos, CompanyID = compId };
+                        tmp = new Worker { ID = _id, Name = name, MiddleName = middleName, SurName = surName,
+                            Date = date.Date, Position = pos, CompanyID = compId };
                     }
                 }
                 reader.Close();

@@ -21,8 +21,9 @@ namespace QulixSystemsTestProject.Controllers
         
         public ActionResult Add()
         {
+            SelectList companies = new SelectList(_rep.List(),"Id","Title");
             var query = _rep.List();
-            ViewBag.Companies = query;
+            ViewBag.Companies = companies;
             return View();
         }
 
@@ -54,8 +55,14 @@ namespace QulixSystemsTestProject.Controllers
 
         public ActionResult Edit(int id)
         {
-            ViewBag.Companies = _rep.List();
-            return View("Add", rep.Find(id));
+            var worker = rep.Find(id);
+            if (worker != null)
+            {
+                SelectList companies = new SelectList(_rep.List(), "Id", "Title", worker.CompanyID);
+                ViewBag.Companies = companies;
+                return View("Add", worker);
+            }
+            return RedirectToAction("List", "Worker");
         }
 
         [HttpPost]
