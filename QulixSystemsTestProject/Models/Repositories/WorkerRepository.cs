@@ -37,6 +37,7 @@ namespace QulixSystemsTestProject.Models.Repositories
 
         public IEnumerable<Worker> List()
         {
+            string CompTitle;
             List<Worker> query = new List<Worker>();
             string sqlExpression = "SELECT * FROM Worker";
             using (SqlConnection connection = new SqlConnection(connectionstring))
@@ -54,8 +55,16 @@ namespace QulixSystemsTestProject.Models.Repositories
                         string surName = reader.GetString(3);
                         DateTime date = reader.GetDateTime(4);
                         string  pos= reader.GetString(5);
-                        int compId = reader.GetInt32(6);
-                        string CompTitle = rep.SearchTitle(compId);
+                        int? compId = reader.GetValue(6) as int?;
+                        if (compId != null) 
+                        {
+                             CompTitle = rep.SearchTitle((int)compId);
+                        }
+                        else
+                        {
+                             CompTitle = "";
+                        }
+                       
                         query.Add(new Worker { ID = id, Name=name,MiddleName=middleName,SurName=surName,
                             Date=date.Date,Position=pos,CompanyID=compId,CompanyTitle=CompTitle});
 
@@ -99,7 +108,7 @@ namespace QulixSystemsTestProject.Models.Repositories
                         string surName = reader.GetString(3);
                         DateTime date = reader.GetDateTime(4);
                         string pos = reader.GetString(5);
-                        int compId = reader.GetInt32(6);
+                        int? compId = reader.GetValue(6) as int?;
                         tmp = new Worker { ID = _id, Name = name, MiddleName = middleName, SurName = surName,
                             Date = date.Date, Position = pos, CompanyID = compId };
                     }

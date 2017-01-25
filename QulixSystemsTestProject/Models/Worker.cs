@@ -36,7 +36,7 @@ namespace QulixSystemsTestProject.Models
         public String Position { get; set; }
 
         [Required]
-        public int CompanyID { get; set; }
+        public int? CompanyID { get; set; }
 
         public string CompanyTitle { get; set; }
 
